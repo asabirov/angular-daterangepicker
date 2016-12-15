@@ -152,6 +152,13 @@
           return results;
         };
         _init();
+        if (opts.singleDatePicker) {
+          $scope.$watch('model', function(n) {
+            if (moment.isMoment(n)) {
+                return _setStartDate(n);
+            }
+          });
+        }
         $scope.$watch('model.startDate', function(n) {
           return _setStartDate(n);
         });
